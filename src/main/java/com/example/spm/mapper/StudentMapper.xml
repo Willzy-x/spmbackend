@@ -15,10 +15,6 @@
         <result column="grade" jdbcType="INTEGER" property="grade" />
     </resultMap>
 
-<!--    <sql id="Base_Column_List">-->
-<!--        sid, sname, gender, grade-->
-<!--    </sql>-->
-
     <select id="selectAll" resultMap="StudentInfo">
         select sid, sname, gender, grade from student
     </select>
@@ -35,4 +31,14 @@
         insert into student (sid, sname, grade, gender, spassword)
         values (#{sid}, #{sname}, #{grade}, #{gender}, #{hashedPassword});
     </insert>
+
+    <delete id="deleteStudentById" parameterType="com.example.spm.model.Student">
+        delete from student where sid = #{sid};
+    </delete>
+
+    <update id="updateStudentGradeById" parameterType="com.example.spm.model.Student">
+        update student
+        set  grade = #{grade}
+        where sid = #{sid};
+    </update>
 </mapper>

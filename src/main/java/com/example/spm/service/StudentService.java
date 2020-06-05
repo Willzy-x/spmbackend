@@ -10,9 +10,15 @@ import java.util.List;
 @Service
 public interface StudentService {
 
-    public List<Student> selectAll();
+    List<Student> selectAll();
 
-    public List<Student> selectByName(String name);
+    List<Student> selectByName(String name);
 
-    public Student selectById(int id);
+    Student selectById(int id);
+
+    int insert(Student student);
+
+    int deleteStudentById(Student student);
+
+    int updateStudentGradeById(Student student);
 }

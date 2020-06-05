@@ -5,7 +5,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -85,7 +84,36 @@ class StudentMapperTest {
             int line = studentMapper.insertStudent(student);
 
             System.out.println(line);
+            assertEquals(1, line);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Test
+    void deleteByIdTest() {
+        Student student = new Student();
+        student.setSid(12345678);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)){
+            StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+            int lines = studentMapper.deleteStudentById(student);
+
+            assertEquals(1, lines);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    void updateStudentGradeByIdTest() {
+        Student student = new Student();
+        student.setSid(12345678);
+        student.setGrade(99);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+            int lines = mapper.updateStudentGradeById(student);
+
+            assertEquals(1, lines);
         } catch (Exception e) {
             e.printStackTrace();
         }

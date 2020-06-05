@@ -41,11 +41,11 @@ public interface StudentMapper {
      * @param student
      * @return
      */
-    int deleteStudent(Student student);
+    int deleteStudentById(Student student);
 
     /**
      * @param student
      * @return
      */
-    int updateStudent(Student student);
+    int updateStudentGradeById(Student student);
 }
