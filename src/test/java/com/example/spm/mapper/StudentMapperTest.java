@@ -35,7 +35,7 @@ class StudentMapperTest {
             List<Student> students = studentMapper.selectAll();
 
             for (Student student : students) {
-                System.out.println(student.getSname());
+                System.out.println(student.getSid());
             }
         } catch (Exception e) {
             e.printStackTrace();
